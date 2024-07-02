@@ -41,11 +41,16 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column | Type   | Options     |
+| Column | Type         | Options     |
 | ------ | ------ | ----------- |
-| name   | string | null: false |
-| image  | string | null: false |
-| price  | string | null: false | 
+| name   | string       | null: false |
+| image  | string       | null: false |
+| category | references | null: false |
+| condition | references | null: false |
+| shipping_fee| references | null: false|
+| area   | references | null: false |
+| delay  | references | null: false |
+| price  | string       | null: false | 
 
 ### Association
 
@@ -56,8 +61,8 @@ Things you may want to cover:
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| post   | references | null: false, foreign_key: true |
+| user_id| references | null: false, foreign_key: true |
+| item_id| references | null: false, foreign_key: true |
 
 ### Association
 
