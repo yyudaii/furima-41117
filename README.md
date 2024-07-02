@@ -36,7 +36,7 @@ Things you may want to cover:
 | myouji             | string | mull: false | 
 | name_kana          | string | null: false | 
 | myouji_kana        | string | null: false |
-| birthday_id        | integer| null: false |
+| birthday           | date   | null: false |
 ### Association
 
 - has_many :items
@@ -45,8 +45,10 @@ Things you may want to cover:
 ## items テーブル
 
 | Column | Type         | Options     |
-| ------ | ------ | ----------- |
+| ------ | ------       | ----------- |
+| user   | references   | null: false, foreign_key: true |
 | name   | string       | null: false |
+| message| text         | null: false  | 
 | category_id | integer | null: false |
 | condition_id | integer | null: false |
 | shipping_fee_id| integer | null: false|
@@ -56,8 +58,8 @@ Things you may want to cover:
 
 ### Association
 
-- has_one  :memories
-- belongs_to : user
+- has_one  :memory
+- belongs_to :user
 
 ## memories テーブル
 
@@ -76,11 +78,12 @@ Things you may want to cover:
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
+| memory  | references | null:false, foreign_key: true  | 
 | post_code | string   | null: false                    |
-| prefecture | string  | null: false                    | 
+| area_id   | integer  | null: false                    |
 | city    | string     | null: false                    |
 | city_line | string   | null: false                    |
-| city_number| string  | null:false                     |
+| city_number| string  |                                |
 | phone_number | string | null: false                   |
 ### Association
 
