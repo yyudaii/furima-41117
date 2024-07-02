@@ -30,10 +30,13 @@ Things you may want to cover:
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false, unique: true |
+| email              | string | null: false |
 | encrypted_password | string | null: false |
 | name               | string | null: false |
+| myouji             | string | mull: false | 
 | name_kana          | string | null: false | 
+| myouji_kana        | string | null: false |
+| birthday_id        | integer| null: false |
 ### Association
 
 - has_many :items
@@ -44,39 +47,41 @@ Things you may want to cover:
 | Column | Type         | Options     |
 | ------ | ------ | ----------- |
 | name   | string       | null: false |
-| image  | string       | null: false |
-| category | references | null: false |
-| condition | references | null: false |
-| shipping_fee| references | null: false|
-| area   | references | null: false |
-| delay  | references | null: false |
-| price  | string       | null: false | 
+| category_id | integer | null: false |
+| condition_id | integer | null: false |
+| shipping_fee_id| integer | null: false|
+| area_id   | integer   | null: false |
+| delay_id  | integer   | null: false |
+| price  | integer      | null: false | 
 
 ### Association
 
 - has_one  :memories
-- belongs_to : sends
+- belongs_to : user
 
 ## memories テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| user_id| references | null: false, foreign_key: true |
-| item_id| references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one    :items
+- belongs_to :item
+  has_one    :send
 - belongs_to :user
 
 ## sends テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| post_code | string   | null: false, foreign_key: true |
-| city    | references | null: false, foreign_key: true |
-| city_line | references | null: false, foreign_key: true |
-| phone_number | integer | null: false, foreign_key: true |
+| post_code | string   | null: false                    |
+| prefecture | string  | null: false                    | 
+| city    | string     | null: false                    |
+| city_line | string   | null: false                    |
+| city_number| string  | null:false                     |
+| phone_number | string | null: false                   |
 ### Association
 
-- belongs_to :user
+- belongs_to :memory
