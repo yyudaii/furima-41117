@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       username == 'furima' && password == '41117'
     end
   end
-  
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
   end
