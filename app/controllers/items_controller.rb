@@ -9,12 +9,14 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.seve
+    @item.user = current_user
+    if @item.save
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
   end
+
   private
 
   def message_params
@@ -22,6 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:category_id, :condition_id, :shipping_fee_id, :area_id, :delay_id)
+    params.require(:item).permit(:user_id, :image, :name, :message, :category_id, :condition_id, :shipping_fee_id, :area_id, :delay_id, :price )
   end
 end
