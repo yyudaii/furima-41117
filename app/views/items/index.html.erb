@@ -132,7 +132,7 @@
       <li class='list'>
        <%= link_to items_path(item) do %>
         <div class='item-img-content'>
-          <%= image_tag item.image.url , class: "item-img" %>
+          <%= image_tag item.image , class: "item-img" %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
@@ -143,7 +143,7 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.fee %></span>
+            <span><%= item.price %>円<br><%= item.fee.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
