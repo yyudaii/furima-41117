@@ -127,11 +127,10 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-
     <% if @items.present? %>
      <% @items.each do |item|%>
       <li class='list'>
-        <%= link_to item_path(item) do %>
+       <%= link_to items_path(item) do %>
         <div class='item-img-content'>
           <%= image_tag item.image.url , class: "item-img" %>
           <div class='sold-out'>
@@ -151,9 +150,10 @@
             </div>
           </div>
         </div>
-        <% end %>
+       <% end %>
       </li>
-     <% end %>
+    <% end %>
+    </ul>
     <% else %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
@@ -173,6 +173,7 @@
         </div>
         <% end %>
       </li>
+    <% end %>  
     </ul>
   </div>
   <%# /商品一覧 %>
@@ -182,4 +183,6 @@
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
-<% end %>
+
+
+
