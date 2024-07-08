@@ -128,8 +128,8 @@
     </div>
     <ul class='item-lists'>
 
-      <% if @items.present? %>
-      <% @items.each do |item|%>
+    <% if @items.present? %>
+     <% @items.each do |item|%>
       <li class='list'>
         <%= link_to item_path(item) do %>
         <div class='item-img-content'>
@@ -153,8 +153,8 @@
         </div>
         <% end %>
       </li>
-
-      <% else %>
+     <% end %>
+    <% else %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -182,3 +182,4 @@
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
+<% end %>
