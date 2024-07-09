@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-  
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :ryakushiki_eisyou, only: [:show, :edit, :update]
+  before_action :jikatobi_kinshi, only: [:edit, :update]
+
   def index 
     @items = Item.order("created_at DESC")
   end
@@ -20,12 +22,30 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:user_id, :image, :name, :message, :category_id, :condition_id, :fee_id, :area_id, :delay_id, :price )
+    params.require(:item).permit(:user_id, :image, :name, :message, :category_id, :condition_id, :fee_id, :area_id, :delay_id, :price)
+  end
+
+  def ryakushiki_eisyou
+    @item = Item.find(params[:id])
+  end
+
+  def jikatobi_kinshi
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 end
