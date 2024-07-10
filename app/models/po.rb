@@ -11,7 +11,4 @@ class Po
   validates :address, presence: true
   validates :tel, presence: true
 
-  def save
-
-  end
 end
