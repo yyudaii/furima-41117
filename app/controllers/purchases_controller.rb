@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   
   def index
+    @po = Po.new(po_params)
   end
 
   def create
@@ -10,7 +11,7 @@ class PurchasesController < ApplicationController
 
   private
 
-  def メソッド名
-    params.permit(指定のカラムを記述する)
+  def po_params
+    params.permit(po_params)
   end
 end
