@@ -81,7 +81,7 @@ Things you may want to cover:
 | memory  | references | null:false, foreign_key: true  | 
 | post | string   | null: false                    |
 | area_id   | integer  | null: false                    |
-| prefecture    | string     | null: false                    |
+| area_id   | integer   | null: false |
 | city| string   | null: false                    |
 | address | string  |                                |
 | Tel | string | null: false                   |
