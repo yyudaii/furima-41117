@@ -12,6 +12,6 @@ class Po
   validates :tel, presence: true
 
   def save
-    # 各テーブルにデータを保存する処理を書く
+
   end
 end
