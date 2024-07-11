@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_11_034720) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_11_091428) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -55,7 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_11_034720) do
   end
 
   create_table "orders", charset: "utf8", force: :cascade do |t|
-    t.integer "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -65,9 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_11_034720) do
   create_table "purchases", charset: "utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "card"
-    t.string "deadline"
-    t.string "security"
     t.string "post"
     t.integer "area_id"
     t.string "city"
