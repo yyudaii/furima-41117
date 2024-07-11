@@ -9,7 +9,7 @@ class Po
   validates :tel, presence: true, format: { with: /\A\d+\z/ }, length: { minimum: 10, maximum: 11 }
 
   def save
-    purchase = Order.create(user_id: user_id, item_id: item_id)
-    Purchase.create(card: card, deadline: deadline, security: security, post: post, area_id: area_id, city: city, address: address, building: building, tel: tel, order_id: purchase.id)
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Purchase.create(card: card, deadline: deadline, security: security, post: post, area_id: area_id, city: city, address: address, building: building, tel: tel, order_id: order.id)
   end
 end
