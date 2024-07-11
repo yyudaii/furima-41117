@@ -9,5 +9,6 @@ class AddDetailsToPurchases < ActiveRecord::Migration[7.0]
     add_column :purchases, :address, :string
     add_column :purchases, :building, :string
     add_column :purchases, :tel, :integer
+    add_column :purchases, :order_id, :integer
   end
 end
