@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @po = Po.new
     @item = Item.find(params[:item_id])
   end
@@ -8,6 +9,7 @@ class OrdersController < ApplicationController
     @po = Po.new(po_params)
     @item = Item.find(params[:item_id])
     if @po.valid?
+      pay_pay
       @po.save
       redirect_to root_path
     else
@@ -18,6 +20,15 @@ class OrdersController < ApplicationController
   private
 
   def po_params
-    params.require(:po).permit( :post, :area_id, :city, :address, :building, :tel).merge(user_id: current_user.id, item_id: params[:item_id] )
+    params.require(:po).permit( :post, :area_id, :city, :address, :building, :tel).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token] )
+  end
+
+  def pay_pay
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: po_params[:token],
+      currency: 'jpy'
+    )
   end
 end
