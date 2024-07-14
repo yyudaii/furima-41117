@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :tachiiri_kinshi, only: [:index, :create]
+
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @po = Po.new
@@ -30,5 +33,10 @@ class OrdersController < ApplicationController
       card: po_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def tachiiri_kinshi
+    @item = Item.find(params[:item_id])
+    redirect_to root_path unless Order.exists?(user_id: current_user.id, item_id: @item.id)
   end
 end
