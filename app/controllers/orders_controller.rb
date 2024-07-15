@@ -35,6 +35,8 @@ class OrdersController < ApplicationController
 
   def tachiiri_kinshi
     @item = Item.find(params[:item_id])
-    redirect_to root_path unless Order.exists?(user_id: current_user.id, item_id: @item.id)
+    if @item.user_id == current_user.id || Order.exists?(item_id: @item.id)
+      redirect_to root_path
+    end
   end
 end
