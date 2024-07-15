@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :delay
   belongs_to :user
+  belongs_to :order
+  belongs_to :purchase
   has_one_attached :image
 
   validates :name, presence: true

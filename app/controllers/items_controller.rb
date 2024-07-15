@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
     redirect_to root_path unless Order.exists?(user_id: current_user.id, item_id: @item.id)
   end
 
