@@ -51,6 +51,11 @@ RSpec.describe Po, type: :model do
         expect(@po.errors.full_messages).to include("Address can't be blank")
       end
 
+      it '建物名が空でも購入できる' do 
+        @po.building = ""
+        expect(@po).to be_valid
+      end
+
       it '電話番号が紐付いていなければ投稿できない' do
         @po.tel = ""
         @po.valid?
@@ -69,6 +74,23 @@ RSpec.describe Po, type: :model do
         expect(@po.errors.full_messages).to include('Tel is too long (maximum is 11 characters)')
       end
 
+      it '電話番号に半角数字以外が含まれている場合登録できない' do 
+        @po.tel = '1234５６789１０'
+        @po.valid?
+        expect(@po.errors.full_messages).to include("Tel is invalid")
+      end
+
+      it 'user_idが空だと保存できない' do
+        @po.user_id = nil
+        @po.valid?
+        expect(@po.errors.full_messages).to include("User can't be blank")
+      end
+  
+      it 'item_idが空だと保存できない' do
+        @po.item_id = nil
+        @po.valid?
+        expect(@po.errors.full_messages).to include("Item can't be blank")
+      end
 
   end
 end

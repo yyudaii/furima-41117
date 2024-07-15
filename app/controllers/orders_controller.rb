@@ -5,12 +5,10 @@ class OrdersController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @po = Po.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
     @po = Po.new(po_params)
-    @item = Item.find(params[:item_id])
     if @po.valid?
       pay_pay
       @po.save

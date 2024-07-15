@@ -7,5 +7,7 @@ FactoryBot.define do
     address {'馬場番地'}
     building {'建物'}
     tel {'1234556789'}
+    user_id {'4'}
+    item_id {'6'}
   end
 end
