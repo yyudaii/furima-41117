@@ -79,12 +79,12 @@ Things you may want to cover:
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | memory  | references | null:false, foreign_key: true  | 
-| post_code | string   | null: false                    |
+| post | string   | null: false                    |
 | area_id   | integer  | null: false                    |
-| city    | string     | null: false                    |
-| city_line | string   | null: false                    |
-| city_number| string  |                                |
-| phone_number | string | null: false                   |
+| area_id   | integer   | null: false |
+| city| string   | null: false                    |
+| address | string  |                                |
+| Tel | string | null: false                   |
 ### Association
 
 - belongs_to :memory

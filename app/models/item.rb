@@ -5,8 +5,12 @@ class Item < ApplicationRecord
   belongs_to :fee
   belongs_to :area
   belongs_to :delay
+
   belongs_to :user
+  has_one :order
+  
   has_one_attached :image
+  
 
   validates :name, presence: true
   validates :message, presence: true

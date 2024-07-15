@@ -8,5 +8,5 @@ window.Stimulus   = application
 
 export { application }
 
-import "item_price"
+
 
