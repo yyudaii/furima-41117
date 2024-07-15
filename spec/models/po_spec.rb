@@ -11,6 +11,11 @@ RSpec.describe Po, type: :model do
       it '全ての値が適切に入力されていれば保存できる' do
         expect(@po).to be_valid
       end
+
+      it '建物名が空でも購入できる' do 
+        @po.building = ""
+        expect(@po).to be_valid
+      end
     end
   
 
@@ -49,11 +54,6 @@ RSpec.describe Po, type: :model do
         @po.address = ""
         @po.valid?
         expect(@po.errors.full_messages).to include("Address can't be blank")
-      end
-
-      it '建物名が空でも購入できる' do 
-        @po.building = ""
-        expect(@po).to be_valid
       end
 
       it '電話番号が紐付いていなければ投稿できない' do
