@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :jikatobi_kinshi, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
   end
 
   def new
@@ -45,7 +45,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:user_id, :image, :name, :message, :category_id, :condition_id, :fee_id, :area_id, :delay_id, :price)
+    params.require(:item).permit(:user_id, :image, :name, :message, :category_id, :condition_id, :fee_id, :area_id, :delay_id,
+                                 :price)
   end
 
   def ryakushiki_eisyou
